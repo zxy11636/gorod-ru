@@ -4,100 +4,91 @@ namespace App\Http\Controllers;
 
 use App\Models\Project;
 use App\Models\Category;
+use App\Models\Comment;
 use Illuminate\Http\Request;
+
 
 class ProjectController extends Controller
 {
-
-    public function index()
+    /**
+     * Список всех проектов с фильтрацией
+     */
+    public function index(Request $request)
     {
-        
-        $projects = Project::where('status', 'active')
-                        ->orderBy('created_at', 'desc')
-                        ->paginate(12);
-        
-        $categories = Category::all();
-        
-        return view('projects.index', compact('projects', 'categories'));
+        $query = Project::query();
+
+        // Фильтр по категории (по slug)
+        if ($request->filled('category')) {
+            $query->where('category', $request->category);
+        }
+
+        // Фильтр по статусу
+        if ($request->filled('status')) {
+            $query->where('status', $request->status);
+        }
+
+        // Поиск по названию
+        if ($request->filled('search')) {
+            $query->where('title', 'like', '%' . $request->search . '%');
+        }
+
+        $projects = $query->latest()->paginate(12);
+
+        // 🔹 Получаем категории из БД
+        $categories = Category::all()->mapWithKeys(function($category) {
+            return [
+                $category->slug => [
+                    'label' => $category->name,
+                    'count' => Project::where('category', $category->slug)->count()
+                ]
+            ];
+        });
+
+        // Статусы
+        $statuses = [
+            'active' => ['label' => 'Активные', 'count' => Project::where('status', 'active')->count()],
+            'voting' => ['label' => 'На голосовании', 'count' => Project::where('status', 'voting')->count()],
+            'completed' => ['label' => 'Реализованные', 'count' => Project::where('status', 'completed')->count()],
+        ];
+
+        return view('projects.index', compact('projects', 'categories', 'statuses'));
     }
 
-    public function create()
-    {
-        $categories = Category::all();
-        return view('projects.create', compact('categories'));
-    }
-
-    public function store(Request $request)
-    {
-        $validated = $request->validate([
-            'title' => 'required|max:255',
-            'description' => 'required',
-            'category' => 'required|exists:categories,slug',
-            'city' => 'required',
-            'district' => 'nullable',
-            'goal_amount' => 'required|numeric|min:1000',
-            'deadline' => 'required|date|after:today',
-            'image' => 'nullable|image|max:2048',
-            'lat' => 'nullable|numeric',
-            'lng' => 'nullable|numeric',
-        ]);
-
-        $validated['user_id'] = auth()->id();
-        $validated['status'] = 'moderation'; 
-
-        $project = Project::create($validated);
-        
-        return redirect()->route('projects.show', $project)
-                        ->with('success', 'Проект создан и отправлен на модерацию!');
-    }
-
+    /**
+     * Страница одного проекта
+     */
     public function show(Project $project)
-    {
-        return view('projects.show', compact('project'));
-    }
-
-    public function edit(Project $project)
-    {
-        $categories = Category::all();
-        return view('projects.edit', compact('project', 'categories'));
-    }
-
-    public function update(Request $request, Project $project)
-    {
-        $validated = $request->validate([
-            'title' => 'required|max:255',
-            'description' => 'required',
-            'category' => 'required|exists:categories,slug',
-            'city' => 'required',
-            'district' => 'nullable',
-            'goal_amount' => 'required|numeric|min:1000',
-            'deadline' => 'required|date|after:today',
-            'lat' => 'nullable|numeric',
-            'lng' => 'nullable|numeric',
-        ]);
-
-        $project->update($validated);
-        
-        return redirect()->route('projects.show', $project)
-                        ->with('success', 'Проект обновлен!');
-    }
-
-
-    public function destroy(Project $project)
-    {
-        $project->delete();
-        
-        return redirect()->route('projects.index')
-                        ->with('success', 'Проект удален!');
+{
+    // Проверка: если проект не активен и пользователь не админ — 404
+    if (!in_array($project->status, ['active', 'voting', 'completed']) && !auth()->user()?->isAdmin()) {
+        abort(404);
     }
     
+    // Последние 5 пожертвований для этого проекта (если модель есть)
+    $recentDonations = class_exists('App\Models\Donation') 
+        ? \App\Models\Donation::where('project_id', $project->id)
+            ->where('status', 'completed')
+            ->with('user')
+            ->latest()
+            ->take(5)
+            ->get()
+        : collect();
+        $comments = Comment::where('project_id', $project->id)
+        ->whereNull('parent_id') // Только корневые
+        ->with(['user', 'replies.user'])
+        ->latest()
+        ->paginate(10);
 
-    public function byCategory(Category $category)
-    {
-        $projects = Project::where('category', $category->slug)
-                        ->where('status', 'active')
-                        ->paginate(12);
-        
-        return view('projects.index', compact('projects', 'category'));
-    }
+    // Последние пожертвования
+    $recentDonations = class_exists('App\Models\Donation') 
+        ? \App\Models\Donation::where('project_id', $project->id)
+            ->where('status', 'completed')
+            ->with('user')
+            ->latest()
+            ->take(5)
+            ->get()
+        : collect();
+
+    return view('projects.show', compact('project', 'recentDonations', 'comments'));
+}
 }

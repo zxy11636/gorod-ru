@@ -6,16 +6,16 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    public function up()
+    public function up(): void
     {
         Schema::create('donations', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('project_id')->constrained()->onDelete('cascade');
-            $table->decimal('amount', 10, 2);
-            $table->string('payment_id')->nullable(); 
-            $table->string('status')->default('pending');
-            $table->string('receipt_url')->nullable();
+            $table->decimal('amount', 10, 2); // Сумма
+            $table->text('comment')->nullable(); // Комментарий
+            $table->string('status')->default('pending'); // pending, completed, failed
+            $table->string('payment_id')->nullable(); // ID транзакции платёжной системы
             $table->timestamps();
         });
     }

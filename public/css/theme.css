@@ -1,0 +1,733 @@
+
+
+html.dark body {
+    background:
+        radial-gradient(circle at top left, rgba(59, 130, 246, 0.06), transparent 30%),
+        radial-gradient(circle at top right, rgba(14, 165, 233, 0.04), transparent 30%),
+        linear-gradient(180deg, #0F172A 0%, #111827 50%, #0F172A 100%);
+    color: #E2E8F0;
+}
+
+
+html.dark header {
+    background: #1E293B;
+    border-bottom-color: #334155;
+}
+
+html.dark .logo-link p {
+    color: #F1F5F9;
+}
+
+html.dark .header_nav-item a {
+    color: #94A3B8;
+}
+
+html.dark .header_nav-item a:hover {
+    color: #60A5FA;
+}
+
+html.dark .login {
+    color: #94A3B8;
+}
+
+html.dark .login:hover {
+    color: #60A5FA;
+}
+
+
+.theme-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid #E2E8F0;
+    background: transparent;
+    color: #475569;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+}
+
+.theme-toggle:hover {
+    background: #F1F5F9;
+    border-color: #CBD5E1;
+    transform: scale(1.05);
+}
+
+html.dark .theme-toggle {
+    border-color: #334155;
+    color: #94A3B8;
+}
+
+html.dark .theme-toggle:hover {
+    background: #1E293B;
+    border-color: #475569;
+    color: #E2E8F0;
+}
+
+.hidden {
+    display: none !important;
+}
+
+
+html.dark .step-card,
+html.dark .project-card,
+html.dark .feat-card-body,
+html.dark .sidebar-card,
+html.dark .content-section,
+html.dark .profile-card,
+html.dark .donations-card {
+    background: rgba(30, 41, 59, 0.85);
+    border-color: #334155;
+    color: #E2E8F0;
+}
+
+html.dark .step-title,
+html.dark .card-title,
+html.dark .card-money .raised,
+html.dark .project-hero-title,
+html.dark .section-heading,
+html.dark .donations-title,
+html.dark .profile-name,
+html.dark .profile-title {
+    color: #F1F5F9;
+}
+
+html.dark .step-text,
+html.dark .card-location,
+html.dark .project-text,
+html.dark .profile-meta-item,
+html.dark .profile-subtitle,
+html.dark .donation-date {
+    color: #94A3B8;
+}
+
+
+html.dark .progress-bar {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+
+html.dark .hero_title {
+    color: #F1F5F9;
+}
+
+html.dark .hero_text {
+    color: #94A3B8;
+}
+
+html.dark .hero-badge {
+    background: rgba(30, 41, 59, 0.8);
+    border-color: #334155;
+}
+
+html.dark .hero-floating-card {
+    background: rgba(30, 41, 59, 0.9);
+}
+
+html.dark .hero-card-number {
+    color: #F1F5F9;
+}
+
+html.dark .hero-card-text {
+    color: #94A3B8;
+}
+
+
+html.dark .projects-title,
+html.dark .steps-title,
+html.dark .feat-title,
+html.dark .completed-title {
+    color: #F1F5F9;
+}
+
+html.dark .projects-subtitle,
+html.dark .steps-subtitle,
+html.dark .feat-subtitle,
+html.dark .completed-subtitle {
+    color: #94A3B8;
+}
+
+html.dark .tab {
+    color: #94A3B8;
+}
+
+html.dark .tab:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: #E2E8F0;
+}
+
+html.dark .tab.active {
+    background: rgba(37, 99, 235, 0.15);
+    color: #60A5FA;
+}
+
+
+html.dark .completed-card {
+    background: #1E293B;
+}
+
+html.dark .completed-content {
+    background: rgba(30, 41, 59, 0.96);
+}
+
+html.dark .completed-card-title {
+    color: #F1F5F9;
+}
+
+html.dark .stat {
+    background: #0F172A;
+    border-color: #334155;
+}
+
+html.dark .stat-label {
+    color: #94A3B8;
+}
+
+html.dark .stat-value {
+    color: #F1F5F9;
+}
+
+
+html.dark .projects-sidebar,
+html.dark .project-card-large {
+    background: rgba(30, 41, 59, 0.9);
+    border-color: #334155;
+}
+
+html.dark .project-card-title {
+    color: #F1F5F9;
+}
+
+html.dark .search-input {
+    background: #1E293B;
+    color: #E2E8F0;
+    border-color: #334155;
+}
+
+html.dark .search-input::placeholder {
+    color: #475569;
+}
+
+html.dark .search-input:focus {
+    background: #0F172A;
+    border-color: #3B82F6;
+}
+
+html.dark .filter-label:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+html.dark .filter-text {
+    color: #CBD5E1;
+}
+
+
+html.dark .profile-stat-card {
+    background: rgba(30, 41, 59, 0.85);
+    border-color: #334155;
+}
+
+html.dark .profile-stat-value {
+    color: #F1F5F9;
+}
+
+html.dark .profile-avatar-placeholder {
+    border-color: #334155;
+}
+
+html.dark .donation-item {
+    background: #0F172A;
+    border-color: #334155;
+}
+
+html.dark .donation-project {
+    color: #F1F5F9;
+}
+
+html.dark .profile-name-edit,
+html.dark .modal__close {
+    background: #1E293B;
+    color: #94A3B8;
+}
+
+html.dark .profile-name-edit:hover,
+html.dark .modal__close:hover {
+    background: #334155;
+    color: #F1F5F9;
+}
+
+
+html.dark .mobile-menu {
+    background: #1E293B;
+}
+
+html.dark .mobile-nav-item a {
+    color: #F1F5F9;
+}
+
+html.dark .mobile-menu-footer {
+    border-top-color: #334155;
+}
+
+html.dark .mobile-profile-link {
+    background: #0F172A;
+    color: #F1F5F9;
+}
+
+html.dark .mobile-menu-toggle span {
+    background: #E2E8F0;
+}
+
+
+html.dark .admin-page {
+    background: #0F172A;
+}
+
+html.dark .admin-card,
+html.dark .admin-table-wrapper,
+html.dark .project-form {
+    background: rgba(30, 41, 59, 0.9);
+    border-color: #334155;
+}
+
+html.dark .admin-title,
+html.dark .stat-number {
+    color: #F1F5F9;
+}
+
+html.dark .admin-table th {
+    background: #0F172A;
+    color: #64748B;
+    border-bottom-color: #334155;
+}
+
+html.dark .admin-table td {
+    color: #CBD5E1;
+    border-bottom-color: #1E293B;
+}
+
+html.dark .admin-table tbody tr:hover {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+
+html.dark .modal {
+    background: rgba(15, 23, 42, 0.95);
+    border-color: #334155;
+}
+
+html.dark .modal__title {
+    color: #F1F5F9;
+}
+
+html.dark .form-group label {
+    color: #CBD5E1;
+}
+
+html.dark .form-group input,
+html.dark .form-group textarea {
+    background: #1E293B;
+    border-color: #334155;
+    color: #F1F5F9;
+}
+
+html.dark .form-group input::placeholder,
+html.dark .form-group textarea::placeholder {
+    color: #475569;
+}
+
+html.dark .form-group input:focus,
+html.dark .form-group textarea:focus {
+    background: #0F172A;
+    border-color: #3B82F6;
+}
+
+
+html.dark .comment-item {
+    background: #1E293B;
+}
+
+html.dark .comment-author {
+    color: #F1F5F9;
+}
+
+html.dark .comment-text {
+    color: #94A3B8;
+}
+
+html.dark .comment-form textarea {
+    background: #1E293B;
+    border-color: #334155;
+    color: #F1F5F9;
+}
+
+html.dark .logo-link img {
+    filter: brightness(0) invert(1);
+}
+
+html.dark .projects-list-page {
+    background:
+        radial-gradient(circle at top left, rgba(59, 130, 246, 0.06), transparent 30%),
+        #0F172A;
+}
+
+html.dark .card-location img {
+    filter: brightness(0) invert(1);
+}
+
+html.dark .hero-link-secondary {
+    color: #E2E8F0;
+}
+
+html.dark .hero-link-secondary:hover {
+    color: #60A5FA;
+}
+
+html.dark .projects-page-title {
+    color: #F1F5F9;
+}
+
+html.dark .projects-page-subtitle {
+    color: #94A3B8;
+}
+
+html.dark .filter-title {
+    color: #F1F5F9;
+}
+
+html.dark .money-raised {
+    color: #F1F5F9;
+}
+
+
+
+html.dark .project-location span {
+    color: #94A3B8;
+}
+
+html.dark .progress-big-number,
+html.dark .progress-amount,
+html.dark .circle-percent,
+html.dark .progress-row-value {
+    color: #F1F5F9;
+}
+
+html.dark .progress-label,
+html.dark .progress-goal-label,
+html.dark .progress-row-label {
+    color: #94A3B8;
+}
+
+html.dark .timeline-title,
+html.dark .team-name,
+html.dark .sidebar-title {
+    color: #F1F5F9;
+}
+
+html.dark .timeline-date,
+html.dark .timeline-percent,
+html.dark .timeline-amount,
+html.dark .team-role,
+html.dark .team-email {
+    color: #94A3B8;
+}
+
+html.dark .timeline-item::before {
+    background: #334155;
+}
+
+html.dark .timeline-marker {
+    background: #1E293B;
+    border-color: #475569;
+}
+
+html.dark .timeline-marker.active {
+    background: #3B82F6;
+}
+
+html.dark .timeline-marker.completed {
+    background: #10B981;
+}
+
+html.dark .team-card {
+    background: #0F172A;
+    border: 1px solid #334155;
+}
+
+html.dark .btn-support-sidebar {
+    background: #2563EB;
+    color: #fff;
+}
+
+html.dark .btn-support-sidebar:hover {
+    background: #3B82F6;
+}
+
+html.dark .amount-btn,
+html.dark .amount-btn-modal {
+    background: #1E293B;
+    border-color: #334155;
+    color: #CBD5E1;
+}
+
+html.dark .amount-btn:hover,
+html.dark .amount-btn-modal:hover {
+    background: #334155;
+}
+
+html.dark .amount-btn.active,
+html.dark .amount-btn-modal.active {
+    background: #2563EB;
+    border-color: #2563EB;
+    color: #fff;
+}
+
+html.dark .comments-count,
+html.dark .comment-date,
+html.dark .text-muted {
+    color: #94A3B8;
+}
+
+html.dark .comment-action {
+    color: #94A3B8;
+}
+
+html.dark .comment-action:hover {
+    color: #E2E8F0;
+}
+
+html.dark .btn-cancel {
+    background: #1E293B;
+    border: 1px solid #334155;
+    color: #CBD5E1;
+}
+
+html.dark .btn-cancel:hover {
+    background: #334155;
+}
+
+html.dark .donation-secure {
+    color: #94A3B8;
+}
+
+html.dark .circle-bg {
+    stroke: #334155;
+}
+
+html.dark .project-page,
+html.dark .project-main {
+    background: transparent;
+}
+
+html.dark .project-hero {
+    background:
+        radial-gradient(circle at top left, rgba(59, 130, 246, 0.06), transparent 30%),
+        #0F172A;
+}
+
+html.dark .feature-item {
+    color: #E2E8F0;
+}
+
+
+
+html.dark .how-it-works-page {
+    background:
+        radial-gradient(circle at top left, rgba(59, 130, 246, 0.06), transparent 30%),
+        radial-gradient(circle at top right, rgba(14, 165, 233, 0.04), transparent 30%),
+        #0F172A;
+}
+
+
+
+html.dark .back-link {
+    color: #94A3B8;
+}
+
+html.dark .back-link:hover {
+    color: #60A5FA;
+}
+
+html.dark .page-title,
+html.dark .section-title,
+html.dark .role-title,
+html.dark .hiw-title,
+html.dark .faq-question {
+    color: #F1F5F9;
+}
+
+html.dark .page-subtitle,
+html.dark .faq-subtitle,
+html.dark .role-subtitle,
+html.dark .column-header,
+html.dark .hiw-label,
+html.dark .hiw-subtitle {
+    color: #94A3B8;
+}
+
+
+
+html.dark .role-card {
+    background: rgba(30, 41, 59, 0.9);
+    border-color: #334155;
+    box-shadow: none;
+}
+
+html.dark .role-icon {
+    background: #0F172A;
+}
+
+html.dark .role-list li {
+    background: #0F172A;
+    border-color: #334155;
+    color: #CBD5E1;
+}
+
+html.dark .role-card.author .role-list li {
+    background: rgba(37, 99, 235, 0.08);
+    border-color: rgba(59, 130, 246, 0.25);
+}
+
+html.dark .role-card.donor .role-list li {
+    background: rgba(16, 185, 129, 0.08);
+    border-color: rgba(16, 185, 129, 0.25);
+}
+
+
+
+html.dark .workflow-step {
+    background: rgba(30, 41, 59, 0.9);
+    border-color: #334155;
+    box-shadow: none;
+}
+
+html.dark .workflow-step:hover {
+    border-color: #3B82F6;
+    background: #1E293B;
+}
+
+html.dark .step-title {
+    color: #E2E8F0;
+}
+
+
+
+html.dark .hiw-card {
+    background: rgba(30, 41, 59, 0.9);
+    border-color: #334155;
+    box-shadow: none;
+}
+
+html.dark .hiw-card.shared {
+    background:
+        linear-gradient(135deg,
+            rgba(37, 99, 235, 0.12),
+            rgba(16, 185, 129, 0.10));
+    border-color: #334155;
+}
+
+html.dark .hiw-card.donor,
+html.dark .hiw-card.success {
+    background: rgba(16, 185, 129, 0.06);
+    border-color: rgba(16, 185, 129, 0.2);
+}
+
+html.dark .hiw-item {
+    color: #CBD5E1;
+}
+
+
+
+html.dark .faq-item {
+    background: rgba(30, 41, 59, 0.9);
+    border-color: #334155;
+}
+
+html.dark .faq-item.active {
+    border-color: #3B82F6;
+    box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.2);
+}
+
+html.dark .faq-answer p,
+html.dark .faq-answer ul,
+html.dark .faq-answer li {
+    color: #CBD5E1;
+}
+
+
+
+html.dark .donation-modal-form {
+    background: #1E293B;
+    border: 1px solid #334155;
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.45),
+        0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+html.dark .modal__title {
+    color: #F1F5F9;
+}
+
+html.dark .form-group label {
+    color: #CBD5E1;
+}
+
+html.dark .form-group input,
+html.dark .form-group textarea {
+    background: #0F172A;
+    border-color: #334155;
+    color: #F1F5F9;
+}
+
+html.dark .form-group input::placeholder,
+html.dark .form-group textarea::placeholder {
+    color: #64748B;
+}
+
+html.dark .form-group input:focus,
+html.dark .form-group textarea:focus {
+    background: #111827;
+    border-color: #3B82F6;
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15);
+}
+
+
+
+html.dark .amount-btn-modal {
+    background: #0F172A;
+    border-color: #334155;
+    color: #CBD5E1;
+}
+
+html.dark .amount-btn-modal:hover {
+    background: rgba(37, 99, 235, 0.12);
+    border-color: #3B82F6;
+    color: #60A5FA;
+}
+
+html.dark .amount-btn-modal.active {
+    background: rgba(37, 99, 235, 0.18);
+    border-color: #3B82F6;
+    color: #60A5FA;
+}
+
+
+
+html.dark .modal__close {
+    background: #0F172A;
+    color: #94A3B8;
+}
+
+html.dark .modal__close:hover {
+    background: #334155;
+    color: #F1F5F9;
+}
+
+
+
+html.dark .donation-secure {
+    color: #94A3B8;
+}

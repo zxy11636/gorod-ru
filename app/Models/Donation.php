@@ -13,15 +13,16 @@ class Donation extends Model
         'user_id',
         'project_id',
         'amount',
-        'payment_id',
+        'comment',
         'status',
-        'receipt_url'
+        'payment_id',
     ];
 
     protected $casts = [
-        'amount' => 'decimal:2'
+        'amount' => 'decimal:2',
     ];
 
+    // Связи
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -30,10 +31,5 @@ class Donation extends Model
     public function project()
     {
         return $this->belongsTo(Project::class);
-    }
-
-    public function isCompleted()
-    {
-        return $this->status === 'completed';
     }
 }

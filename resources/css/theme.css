@@ -1,0 +1,161 @@
+/* Dark mode theme styles */
+.dark {
+    color-scheme: dark;
+}
+
+/* Light mode styles (default) */
+:root {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8fafc;
+    --text-primary: #1f2937;
+    --text-secondary: #6b7280;
+    --border-color: #e5e7eb;
+    --header-bg: #ffffff;
+    --header-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+}
+
+/* Dark mode styles */
+.dark {
+    --bg-primary: #111827;
+    --bg-secondary: #1f2937;
+    --text-primary: #f9fafb;
+    --text-secondary: #d1d5db;
+    --border-color: #374151;
+    --header-bg: #111827;
+    --header-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
+}
+
+/* Apply theme variables to body */
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Header styles */
+header {
+    background-color: var(--header-bg);
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: var(--header-shadow);
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Dark mode specific Tailwind overrides */
+.dark .bg-white {
+    background-color: var(--bg-primary) !important;
+}
+
+.dark .bg-gray-50 {
+    background-color: var(--bg-secondary) !important;
+}
+
+.dark .bg-gray-100 {
+    background-color: var(--bg-secondary) !important;
+}
+
+.dark .text-gray-900 {
+    color: var(--text-primary) !important;
+}
+
+.dark .text-gray-700 {
+    color: var(--text-secondary) !important;
+}
+
+.dark .text-gray-600 {
+    color: var(--text-secondary) !important;
+}
+
+.dark .border-gray-200 {
+    border-color: var(--border-color) !important;
+}
+
+.dark .border-gray-300 {
+    border-color: var(--border-color) !important;
+}
+
+/* Footer styles */
+footer {
+    background-color: var(--bg-secondary);
+    border-top: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+/* Modal styles */
+.modal {
+    background-color: var(--bg-primary);
+}
+
+.modal__form {
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+}
+
+/* Theme toggle button styles */
+.theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    margin-left: 8px;
+    border-radius: 6px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.theme-toggle:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+    transform: scale(1.1);
+}
+
+.theme-toggle:active {
+    transform: scale(0.95);
+}
+
+.theme-toggle.dark:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.theme-toggle svg {
+    transition: opacity 0.3s ease;
+    stroke: currentColor;
+    color: inherit;
+}
+
+/* Mobile theme toggle styles */
+.mobile-theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    margin: 8px 0;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.mobile-theme-toggle:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.mobile-theme-toggle.dark:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Smooth transitions for theme changes */
+* {
+    transition-property: background-color, border-color, color, box-shadow;
+    transition-timing-function: ease;
+    transition-duration: 0.3s;
+}
+
+/* Ensure proper inheritance for theme variables */
+body, header, footer, .modal {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}

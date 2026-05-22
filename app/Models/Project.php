@@ -23,41 +23,71 @@ class Project extends Model
         'image',
         'images',
         'lat',
-        'lng'
+        'lng',
     ];
 
     protected $casts = [
-        'images' => 'array',
-        'deadline' => 'date',
         'goal_amount' => 'decimal:2',
-        'current_amount' => 'decimal:2'
+        'current_amount' => 'decimal:2',
+        'images' => 'array', // JSON поле
+        'deadline' => 'date',
     ];
 
-    public function user()
+    // Связь с автором
+    public function author()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 
+    // Связь с пожертвованиями
     public function donations()
     {
         return $this->hasMany(Donation::class);
     }
 
-    public function reports()
+    // Процент сбора
+    public function getProgressPercentAttribute()
     {
-        return $this->hasMany(Report::class);
+        if ($this->goal_amount <= 0) return 0;
+        return min(100, round(($this->current_amount / $this->goal_amount) * 100));
     }
 
-    public function isActive()
+    // Форматирование сумм
+    public function getFormattedGoalAttribute()
     {
-        return $this->status === 'active';
+        return number_format($this->goal_amount, 0, '.', ' ') . ' ₽';
     }
 
-    public function getProgressPercentage()
+    public function getFormattedCurrentAttribute()
     {
-        if ($this->goal_amount > 0) {
-            return min(100, round(($this->current_amount / $this->goal_amount) * 100));
-        }
-        return 0;
+        return number_format($this->current_amount, 0, '.', ' ') . ' ₽';
     }
+
+    // Цвет бейджа по категории
+    public function getBadgeColorAttribute(): string
+{
+    $colors = [
+        'parks'     => 'green',   // Парки и скверы
+        'roads'     => 'orange',  // Дороги и тротуары
+        'buildings' => 'gray',    // Здания и фасады
+        'sport'     => 'blue',    // Спортивные объекты
+        'culture'   => 'purple',  // Культурные объекты
+        'ecology'   => 'green',   // Экология
+        'health'    => 'red',     // Здравоохранение
+    ];
+    
+    return $colors[$this->category] ?? 'blue';
+}
+    public function getCategoryNameAttribute(): string
+{
+    $category = \App\Models\Category::where('slug', $this->category)->first();
+    return $category ? $category->name : $this->category;
+}
+
+/**
+ * Аксессор: возвращает цвет бейджа по slug категории
+ */
+
+    
+    
 }
